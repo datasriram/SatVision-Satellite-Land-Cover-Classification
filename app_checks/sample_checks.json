@@ -1,0 +1,56 @@
+[
+  {
+    "file": "AnnualCrop_1153.jpg",
+    "original_label": "AnnualCrop",
+    "prediction": "AnnualCrop",
+    "softmax_probability": 0.9995244741439819,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 43.16529846191406,
+    "matches_saved_prediction": true
+  },
+  {
+    "file": "Forest_1593.jpg",
+    "original_label": "Forest",
+    "prediction": "Forest",
+    "softmax_probability": 0.9998488426208496,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 44.86540985107422,
+    "matches_saved_prediction": true
+  },
+  {
+    "file": "Highway_1277.jpg",
+    "original_label": "Highway",
+    "prediction": "Highway",
+    "softmax_probability": 0.5003595948219299,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 28.521831512451172,
+    "matches_saved_prediction": true
+  },
+  {
+    "file": "Residential_379.jpg",
+    "original_label": "Residential",
+    "prediction": "Residential",
+    "softmax_probability": 0.9974055886268616,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 53.02925109863281,
+    "matches_saved_prediction": true
+  },
+  {
+    "file": "River_2152.jpg",
+    "original_label": "River",
+    "prediction": "River",
+    "softmax_probability": 0.9774302840232849,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 43.201637268066406,
+    "matches_saved_prediction": true
+  },
+  {
+    "file": "SeaLake_1735.jpg",
+    "original_label": "SeaLake",
+    "prediction": "AnnualCrop",
+    "softmax_probability": 0.47859761118888855,
+    "feature_layer": "mobilenetv2_1.00_96/Conv_1",
+    "gradient_l1": 37.28440856933594,
+    "matches_saved_prediction": true
+  }
+]

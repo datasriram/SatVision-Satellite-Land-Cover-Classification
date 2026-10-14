@@ -1,0 +1,11 @@
+{
+  "selected_model": "mobilenet",
+  "criterion": "highest validation macro F1",
+  "all_development_completed_before_test": true,
+  "validation_macro_f1": {
+    "cnn": 0.7502940908293374,
+    "mobilenet": 0.9247241714788617,
+    "cnn_rotation": 0.7527309913543114
+  },
+  "test_results_seen_at_selection": false
+}

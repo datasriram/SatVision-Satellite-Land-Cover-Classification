@@ -1,0 +1,38 @@
+[
+  {
+    "file": "AnnualCrop_1153.jpg",
+    "label": "AnnualCrop",
+    "source_path": "AnnualCrop/AnnualCrop_1153.jpg",
+    "original_split": "test"
+  },
+  {
+    "file": "Forest_1593.jpg",
+    "label": "Forest",
+    "source_path": "Forest/Forest_1593.jpg",
+    "original_split": "test"
+  },
+  {
+    "file": "Highway_1277.jpg",
+    "label": "Highway",
+    "source_path": "Highway/Highway_1277.jpg",
+    "original_split": "test"
+  },
+  {
+    "file": "Residential_379.jpg",
+    "label": "Residential",
+    "source_path": "Residential/Residential_379.jpg",
+    "original_split": "test"
+  },
+  {
+    "file": "River_2152.jpg",
+    "label": "River",
+    "source_path": "River/River_2152.jpg",
+    "original_split": "test"
+  },
+  {
+    "file": "SeaLake_1735.jpg",
+    "label": "SeaLake",
+    "source_path": "SeaLake/SeaLake_1735.jpg",
+    "original_split": "test"
+  }
+]

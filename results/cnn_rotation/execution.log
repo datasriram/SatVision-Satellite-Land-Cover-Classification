@@ -1,0 +1,91 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791950400.403967   11084 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791950403.808879   11084 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+{'python': '3.13.9', 'tensorflow': '2.21.0', 'keras': '3.15.1', 'logical_cpus': 16, 'devices': ["PhysicalDevice(name='/physical_device:CPU:0', device_type='CPU')"], 'intra_op_threads': 8, 'inter_op_threads': 2}
+Model: "cnn_rotation"
++--------------------------------------------------------------------------+
+| Layer (type)                    | Output Shape           |       Param # |
+|---------------------------------+------------------------+---------------|
+| input_layer (InputLayer)        | (None, 64, 64, 3)      |             0 |
+|---------------------------------+------------------------+---------------|
+| random_flip (RandomFlip)        | (None, 64, 64, 3)      |             0 |
+|---------------------------------+------------------------+---------------|
+| random_rotation                 | (None, 64, 64, 3)      |             0 |
+| (RandomRotation)                |                        |               |
+|---------------------------------+------------------------+---------------|
+| rescaling (Rescaling)           | (None, 64, 64, 3)      |             0 |
+|---------------------------------+------------------------+---------------|
+| conv2d (Conv2D)                 | (None, 64, 64, 16)     |           448 |
+|---------------------------------+------------------------+---------------|
+| max_pooling2d (MaxPooling2D)    | (None, 32, 32, 16)     |             0 |
+|---------------------------------+------------------------+---------------|
+| conv2d_1 (Conv2D)               | (None, 32, 32, 32)     |         4,640 |
+|---------------------------------+------------------------+---------------|
+| max_pooling2d_1 (MaxPooling2D)  | (None, 16, 16, 32)     |             0 |
+|---------------------------------+------------------------+---------------|
+| conv2d_2 (Conv2D)               | (None, 16, 16, 64)     |        18,496 |
+|---------------------------------+------------------------+---------------|
+| max_pooling2d_2 (MaxPooling2D)  | (None, 8, 8, 64)       |             0 |
+|---------------------------------+------------------------+---------------|
+| global_average_pooling2d        | (None, 64)             |             0 |
+| (GlobalAveragePooling2D)        |                        |               |
+|---------------------------------+------------------------+---------------|
+| dense (Dense)                   | (None, 64)             |         4,160 |
+|---------------------------------+------------------------+---------------|
+| dropout (Dropout)               | (None, 64)             |             0 |
+|---------------------------------+------------------------+---------------|
+| dense_1 (Dense)                 | (None, 10)             |           650 |
++--------------------------------------------------------------------------+
+ Total params: 28,394 (110.91 KB)
+ Trainable params: 28,394 (110.91 KB)
+ Non-trainable params: 0 (0.00 B)
+Epoch 1/15
+296/296 - 17s - 59ms/step - accuracy: 0.3331 - loss: 1.7373 - val_accuracy: 0.4595 - val_loss: 1.3438
+Epoch 2/15
+296/296 - 17s - 57ms/step - accuracy: 0.4749 - loss: 1.3640 - val_accuracy: 0.5595 - val_loss: 1.2182
+Epoch 3/15
+296/296 - 17s - 58ms/step - accuracy: 0.5393 - loss: 1.2209 - val_accuracy: 0.5960 - val_loss: 1.1045
+Epoch 4/15
+296/296 - 18s - 59ms/step - accuracy: 0.5877 - loss: 1.1234 - val_accuracy: 0.6452 - val_loss: 0.9695
+Epoch 5/15
+296/296 - 19s - 63ms/step - accuracy: 0.6307 - loss: 1.0091 - val_accuracy: 0.6262 - val_loss: 1.0492
+Epoch 6/15
+296/296 - 18s - 62ms/step - accuracy: 0.6691 - loss: 0.9212 - val_accuracy: 0.6309 - val_loss: 1.0629
+Epoch 7/15
+296/296 - 18s - 62ms/step - accuracy: 0.6854 - loss: 0.8760 - val_accuracy: 0.7022 - val_loss: 0.8376
+Epoch 8/15
+296/296 - 18s - 62ms/step - accuracy: 0.7038 - loss: 0.8352 - val_accuracy: 0.7089 - val_loss: 0.7869
+Epoch 9/15
+296/296 - 19s - 63ms/step - accuracy: 0.7156 - loss: 0.7990 - val_accuracy: 0.7000 - val_loss: 0.8393
+Epoch 10/15
+296/296 - 19s - 65ms/step - accuracy: 0.7196 - loss: 0.7758 - val_accuracy: 0.7528 - val_loss: 0.6747
+Epoch 11/15
+296/296 - 18s - 62ms/step - accuracy: 0.7362 - loss: 0.7359 - val_accuracy: 0.7575 - val_loss: 0.6709
+Epoch 12/15
+296/296 - 19s - 63ms/step - accuracy: 0.7365 - loss: 0.7351 - val_accuracy: 0.7235 - val_loss: 0.7628
+Epoch 13/15
+296/296 - 19s - 64ms/step - accuracy: 0.7412 - loss: 0.7171 - val_accuracy: 0.7637 - val_loss: 0.6501
+Epoch 14/15
+296/296 - 19s - 64ms/step - accuracy: 0.7384 - loss: 0.7279 - val_accuracy: 0.7378 - val_loss: 0.7391
+Epoch 15/15
+296/296 - 20s - 67ms/step - accuracy: 0.7449 - loss: 0.7032 - val_accuracy: 0.7365 - val_loss: 0.7552
+C:\Users\tumma\Documents\Codex\2026-10-14\do-not-stop-after-generating-the\outputs\satellite-land-use\results\cnn_rotation\validation {"accuracy": 0.7637037037037037, "macro_precision": 0.7580542901836349, "macro_recall": 0.7577333333333333, "macro_f1": 0.7527309913543114, "images": 4050}
+{
+  "status": "completed",
+  "model": "cnn_rotation",
+  "seconds": 275.47753159998683,
+  "epochs_completed": 15,
+  "epoch_limit": 15,
+  "best_epoch_by_val_loss": 13,
+  "selection_criterion": "minimum validation loss",
+  "seed": 42,
+  "validation": {
+    "accuracy": 0.7637037037037037,
+    "macro_precision": 0.7580542901836349,
+    "macro_recall": 0.7577333333333333,
+    "macro_f1": 0.7527309913543114,
+    "images": 4050
+  }
+}

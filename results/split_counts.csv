@@ -1,0 +1,11 @@
+class,test,train,validation
+AnnualCrop,450,2100,450
+Forest,450,2100,450
+HerbaceousVegetation,450,2100,450
+Highway,375,1750,375
+Industrial,375,1750,375
+Pasture,300,1400,300
+PermanentCrop,375,1750,375
+Residential,450,2100,450
+River,375,1750,375
+SeaLake,450,2100,450

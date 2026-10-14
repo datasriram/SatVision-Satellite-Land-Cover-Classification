@@ -1,0 +1,19 @@
+{
+  "change": "Add training-only random rotations up to 90 degrees in either direction",
+  "baseline": "cnn",
+  "candidate": "cnn_rotation",
+  "selection_data": "validation only",
+  "accuracy_difference_percentage_points": 0.17283950617283939,
+  "macro_f1_difference": 0.0024369005249740283,
+  "test_used_for_development": false,
+  "cnn": {
+    "highway_recall": 0.3546666666666667,
+    "highway_predicted_as_river": 115,
+    "river_predicted_as_highway": 51
+  },
+  "cnn_rotation": {
+    "highway_recall": 0.4453333333333333,
+    "highway_predicted_as_river": 54,
+    "river_predicted_as_highway": 101
+  }
+}

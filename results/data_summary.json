@@ -1,0 +1,27 @@
+{
+  "images": 27000,
+  "classes": [
+    "AnnualCrop",
+    "Forest",
+    "HerbaceousVegetation",
+    "Highway",
+    "Industrial",
+    "Pasture",
+    "PermanentCrop",
+    "Residential",
+    "River",
+    "SeaLake"
+  ],
+  "dimensions": {
+    "(64, 64, 'RGB')": 27000
+  },
+  "invalid_files": 0,
+  "duplicate_groups": 0,
+  "largest_to_smallest_class_ratio": 1.5,
+  "splits": {
+    "train": 18900,
+    "validation": 4050,
+    "test": 4050
+  },
+  "seed": 42
+}

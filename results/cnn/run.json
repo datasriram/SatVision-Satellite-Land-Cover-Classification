@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "model": "cnn",
+  "seconds": 236.7435531000374,
+  "epochs_completed": 15,
+  "epoch_limit": 15,
+  "best_epoch_by_val_loss": 14,
+  "selection_criterion": "minimum validation loss",
+  "seed": 42,
+  "validation": {
+    "accuracy": 0.7619753086419753,
+    "macro_precision": 0.7528524736135751,
+    "macro_recall": 0.7563777777777778,
+    "macro_f1": 0.7502940908293374,
+    "images": 4050
+  }
+}

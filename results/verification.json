@@ -1,0 +1,23 @@
+{
+  "syntax_compilation": "passed",
+  "split_path_overlap": "none",
+  "initial_cnn_rotation_weights": "exactly equal at seed 42",
+  "smoke_tests": {
+    "cnn": "passed",
+    "mobilenet": "passed",
+    "cnn_rotation": "passed"
+  },
+  "pip_check": "No broken requirements found",
+  "full_training_runs": 3,
+  "validation_evaluations": 3,
+  "test_evaluations": 3,
+  "metrics_recomputed_from_saved_predictions": "passed",
+  "comparison_table_consistency": "passed",
+  "png_files_verified": 22,
+  "trained_model_sha256": {
+    "cnn": "e61c41fd1ab375e8f694467756b7ebee393adc3f6975b0ce62826503e6491c67",
+    "mobilenet": "31bc6c59ad4a5bed12b0b73b552bce61ff36ee08efd4f80c0e9a7c453333c7ed",
+    "cnn_rotation": "9e9090e0fa9c620466de434fef8d20c5c3f1c046c309284434900852ea7157b9"
+  },
+  "requested_pipeline_status": "completed"
+}

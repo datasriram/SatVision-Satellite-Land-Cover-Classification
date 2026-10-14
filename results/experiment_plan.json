@@ -1,0 +1,10 @@
+{
+  "decision_stage": "after CNN validation, before any test evaluation",
+  "observed_issue": "Highway recall is 0.3546667; 115 Highway validation images are predicted as River, and 51 River images are predicted as Highway.",
+  "hypothesis": "Roads and rivers are narrow structures at different orientations. Adding rotations may encourage orientation-independent features and reduce confusion. Orientation has not been established as the cause.",
+  "change": "Add RandomRotation(0.25) during CNN training only.",
+  "controlled_settings": "Same split, seed 42, CNN layers, dropout, Adam learning rate, batch size, 15-epoch limit and validation-loss checkpoint selection.",
+  "comparison": "Validation macro F1 and accuracy, plus Highway recall and Highway/River confusion counts.",
+  "success_claim": "Only if the measured validation comparison supports it; no guarantee of improvement.",
+  "test_policy": "Finish this experiment before evaluating final checkpoints on test. Do not change models in response to test results."
+}

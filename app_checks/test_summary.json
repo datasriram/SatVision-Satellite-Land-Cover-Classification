@@ -1,0 +1,11 @@
+{
+  "python": "3.13.9",
+  "tensorflow": "2.21.0",
+  "tests_run": 4,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "new_model_accuracy_measured": false,
+  "seconds": 21.00167310005054,
+  "test_process_peak_rss_mib": 507.2734375
+}

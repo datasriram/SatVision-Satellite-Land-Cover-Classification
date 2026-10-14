@@ -1,0 +1,52 @@
+[
+  {
+    "true": "Highway",
+    "predicted": "River",
+    "count": 124
+  },
+  {
+    "true": "HerbaceousVegetation",
+    "predicted": "PermanentCrop",
+    "count": 64
+  },
+  {
+    "true": "Highway",
+    "predicted": "PermanentCrop",
+    "count": 59
+  },
+  {
+    "true": "PermanentCrop",
+    "predicted": "HerbaceousVegetation",
+    "count": 46
+  },
+  {
+    "true": "PermanentCrop",
+    "predicted": "Highway",
+    "count": 42
+  },
+  {
+    "true": "Pasture",
+    "predicted": "River",
+    "count": 38
+  },
+  {
+    "true": "AnnualCrop",
+    "predicted": "PermanentCrop",
+    "count": 37
+  },
+  {
+    "true": "River",
+    "predicted": "Highway",
+    "count": 37
+  },
+  {
+    "true": "Highway",
+    "predicted": "Industrial",
+    "count": 32
+  },
+  {
+    "true": "AnnualCrop",
+    "predicted": "River",
+    "count": 29
+  }
+]

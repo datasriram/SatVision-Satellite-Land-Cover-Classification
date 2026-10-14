@@ -1,0 +1,7 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791950838.638398   35160 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791950841.413548   35160 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+{'python': '3.13.9', 'tensorflow': '2.21.0', 'keras': '3.15.1', 'logical_cpus': 16, 'devices': ["PhysicalDevice(name='/physical_device:CPU:0', device_type='CPU')"], 'intra_op_threads': 8, 'inter_op_threads': 2}
+C:\Users\tumma\Documents\Codex\2026-10-14\do-not-stop-after-generating-the\outputs\satellite-land-use\results\cnn_rotation\test {"accuracy": 0.7614814814814815, "macro_precision": 0.7563671748998184, "macro_recall": 0.7554666666666667, "macro_f1": 0.7503600662609033, "images": 4050}

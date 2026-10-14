@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "model": "cnn_rotation",
+  "seconds": 275.47753159998683,
+  "epochs_completed": 15,
+  "epoch_limit": 15,
+  "best_epoch_by_val_loss": 13,
+  "selection_criterion": "minimum validation loss",
+  "seed": 42,
+  "validation": {
+    "accuracy": 0.7637037037037037,
+    "macro_precision": 0.7580542901836349,
+    "macro_recall": 0.7577333333333333,
+    "macro_f1": 0.7527309913543114,
+    "images": 4050
+  }
+}

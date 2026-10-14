@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "model": "mobilenet",
+  "seconds": 472.1543102999567,
+  "epochs_completed": 8,
+  "epoch_limit": 15,
+  "best_epoch_by_val_loss": 5,
+  "selection_criterion": "minimum validation loss",
+  "seed": 42,
+  "validation": {
+    "accuracy": 0.9274074074074075,
+    "macro_precision": 0.9248524613178954,
+    "macro_recall": 0.9250222222222222,
+    "macro_f1": 0.9247241714788617,
+    "images": 4050
+  }
+}

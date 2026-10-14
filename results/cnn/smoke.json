@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "batch_images": 20,
+  "metrics": {
+    "accuracy": 0.10000000149011612,
+    "loss": 2.2993879318237305
+  }
+}
