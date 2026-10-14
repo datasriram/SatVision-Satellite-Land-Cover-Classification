@@ -1,7 +1,6 @@
 {
   "version": "eurosat-mobilenet-v1",
-  "filename": "mobilenet-v1.keras",
+  "filename": "models/mobilenet.keras",
   "bytes": 10630358,
-  "sha256": "31bc6c59ad4a5bed12b0b73b552bce61ff36ee08efd4f80c0e9a7c453333c7ed",
-  "url": null
+  "sha256": "31bc6c59ad4a5bed12b0b73b552bce61ff36ee08efd4f80c0e9a7c453333c7ed"
 }

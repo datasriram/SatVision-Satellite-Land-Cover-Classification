@@ -1,8 +1,18 @@
-# SatVision application upgrade verification
+# SatVision application verification
+
+## Direct repository checkpoint update
+
+The model is now loaded only from `Path(__file__).resolve().parent / 'models/mobilenet.keras'` in `inference.py`, with the original size and SHA-256 checks. Release downloads, model URLs and download-cache fallback code have been removed. Git ignore checks confirm that `models/mobilenet.keras` can be added normally while other checkpoints, model temporary directories and caches remain ignored. No staging, commit or push was performed.
+
+Modified project files: `.gitignore`, `inference.py`, `model_asset.json`, `test_app.py`, `README.md`, `DEPLOYMENT.md` and this verification record. The tests regenerated `app_checks/test_summary.json`; current direct-loading evidence is in `app_checks/direct_checkpoint_verification.json`.
+
+The current full test suite passed all four groups with zero failures/errors in 11.94 seconds after imports, peaking at 507.07 MiB RSS. All six example predictions and their recorded probabilities match the previous application run exactly (maximum probability difference 0.0). Missing and tampered local checkpoints fail correctly. A fresh Streamlit server on port 8502 returned HTTP 200 from its health endpoint and was stopped after verification. Tests initially stalled in the sandbox's local socket/event-loop setup; granting network permission for loopback testing resolved the stall, and the complete suite was rerun successfully.
+
+Source comparisons confirm that class ordering, RGB preprocessing, prediction, Grad-CAM, overlay and classifier-loading functions are unchanged; only checkpoint path resolution changed. A before/after checksum check covered all 93 existing files under `results/` and `models/`, including the trained checkpoints and caches. None changed. The checkpoint was neither retrained nor reserialized. All seven unchanged pinned app dependencies match the saved Linux CPython 3.13 wheel-resolution report. Community Cloud preparation is checked, but an actual Linux/Cloud runtime deployment has not been performed.
 
 ## Files and preservation
 
-Added `app.py`, `inference.py`, `test_app.py`, `model_asset.json`, `.streamlit/config.toml`, six example JPEGs with manifest/license/attribution, deployment instructions, and generated application checks/captures. Updated the project README, application requirements and Git exclusions. The former README is preserved verbatim in `EXPERIMENTS.md`; the former requirements are retained in `requirements-training.txt`.
+The earlier application upgrade added `app.py`, `inference.py`, `test_app.py`, `model_asset.json`, `.streamlit/config.toml`, six example JPEGs with manifest/license/attribution, deployment instructions, and generated application checks/captures. The former README is preserved verbatim in `EXPERIMENTS.md`; the former requirements are retained in `requirements-training.txt`.
 
 A before/after SHA-256 check covered 86 original result, model, experiment-source and execution-record files. None changed. No model was fitted, retrained, reserialized or overwritten. Original test metrics remain unchanged. No new classification accuracy estimate was produced from the examples.
 
@@ -10,12 +20,12 @@ A before/after SHA-256 check covered 86 original result, model, experiment-sourc
 
 The final full suite ran four test groups successfully, with zero failures/errors, under Python 3.13.9, TensorFlow 2.21.0, Keras 3.15.1 and Streamlit 1.65.0:
 
-- Checkpoint size/SHA-256 verification, load, saved class ordering, mocked HTTPS download/cache reuse, and rejection/cleanup of tampered downloads.
+- Repository-local checkpoint size/SHA-256 verification, load, saved class ordering, and rejection of missing or tampered local checkpoints.
 - RGB, grayscale, palette and RGBA PNG inputs; unsupported GIF, corrupt data, and files exceeding the byte limit. Valid inputs reached inference with shape `(1, 64, 64, 3)` and raw pixel values.
 - Six real EuroSAT examples: exact equality with the training loader's JPEG decode/resize; `(1, 10)` model output; finite probabilities summing to one; original saved top-class/probability agreement within `2e-5`; Grad-CAM finite nonzero gradients, nonconstant normalized 3×3 heatmaps, class-dependent maps and aligned overlays. Reconstructed backbone/head probabilities matched the checkpoint output within `2e-5`.
 - Streamlit AppTest: initial render, classification, prediction display, Grad-CAM class selection, opacity-slider changes and switching to upload mode without application errors. The final chart uses a fixed 0–100% probability axis.
 
-The final full suite took 21.00 seconds after imports and peaked at 507.27 MiB Windows process RSS. It includes test overhead and more than one model instance; this is not a Cloud memory measurement. Full machine-readable records are in `app_checks/test_summary.json` and `app_checks/sample_checks.json`. The supplied SeaLake example is misclassified as AnnualCrop, matching the original saved prediction. Examples were not filtered for success.
+The earlier upgrade suite took 21.00 seconds after imports and peaked at 507.27 MiB Windows process RSS; current direct-loading measurements are listed above. These include test overhead and more than one model instance, not a Cloud memory measurement. Full machine-readable records are in `app_checks/test_summary.json` and `app_checks/sample_checks.json`. The supplied SeaLake example is misclassified as AnnualCrop, matching the original saved prediction. Examples were not filtered for success.
 
 An actual local Streamlit server started on `127.0.0.1:8501`. `/_stcore/health` returned HTTP 200 with `ok`. Browser verification showed input preview, predicted class, top-three probabilities, all-class chart, selectable Grad-CAM overlay and explanatory text. Genuine narrow-browser screenshots are saved in `app_checks/app-screenshot.jpg` and `app_checks/gradcam-screenshot.jpg`; the six saved overlay PNGs are computed results, not application screenshots.
 
@@ -49,8 +59,8 @@ The actual server launch used the project directory as working directory and `ap
 
 ## Fixes and remaining deployment work
 
-The first test suite's assertions passed, but its final Windows memory-reporting call failed because the process handle was treated as a 32-bit integer. Explicit ctypes argument types fixed the report, and the complete suite was rerun successfully. A separate inspection of pip's Unicode metadata needed explicit UTF-8 decoding. The model downloader's failure cleanup was also moved after temporary-file closure for Windows compatibility and covered by a tampered-download test.
+During the earlier upgrade, the Windows memory-reporting call needed explicit ctypes argument types, and inspection of pip's Unicode metadata needed UTF-8 decoding. Those fixes remain in place. Download-related code has since been removed in favor of repository-local loading.
 
-The original deployment checkpoint URL is intentionally unset. Before public deployment, obtain publication approval, publish the existing checkpoint as a versioned release asset, set its actual HTTPS URL, and perform a Linux/Community Cloud runtime and memory check. The mock download check does not establish that an unpublished release exists. No GitHub push or external deployment occurred.
+Before public deployment, manually include the original `models/mobilenet.keras` in the repository alongside the application, select Python 3.13 in Community Cloud, and perform a hosted runtime/memory check. No model URL, release asset or download step is required. No GitHub push or external deployment occurred.
 
 Real aligned multi-date satellite change detection is future work, not an implemented feature. Grad-CAM is qualitative and coarse; probabilities are not calibrated confidence.

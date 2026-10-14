@@ -6,6 +6,6 @@
   "errors": 0,
   "successful": true,
   "new_model_accuracy_measured": false,
-  "seconds": 21.00167310005054,
-  "test_process_peak_rss_mib": 507.2734375
+  "seconds": 11.942434999975376,
+  "test_process_peak_rss_mib": 507.07421875
 }

@@ -40,7 +40,7 @@ On this machine, from the original workspace:
 & 'C:\Users\tumma\Documents\Codex\sat-env\Scripts\python.exe' -m streamlit run outputs\satellite-land-use\app.py --server.address 127.0.0.1 --server.port 8501
 ```
 
-Open [the local app](http://127.0.0.1:8501). The checkpoint at `models/mobilenet.keras` is loaded once through Streamlit's resource cache. It is excluded from Git. A missing checkpoint produces an actionable error; it is not replaced by random weights. See [DEPLOYMENT.md](DEPLOYMENT.md) for versioned model downloads and Community Cloud setup.
+Open [the local app](http://127.0.0.1:8501). The checkpoint at `models/mobilenet.keras` is loaded directly from the repository, relative to `inference.py`, once through Streamlit's resource cache. This 10.14 MiB checkpoint is allowed by `.gitignore`; other models and caches remain ignored. Its byte count and SHA-256 are verified against `model_asset.json`. A missing or modified checkpoint fails clearly. No release download, network access or model URL is required. See [DEPLOYMENT.md](DEPLOYMENT.md) for Community Cloud setup.
 
 `requirements.txt` contains pinned application dependencies. The former experiment dependency file is retained as `requirements-training.txt`; the original exact training environment remains in `results/environment-packages.txt`. Running the application does not require the complete EuroSAT dataset.
 
@@ -72,4 +72,4 @@ The original experiment uses one seed and a patch-level random split, so geograp
 
 Future temporal change detection requires geographically aligned, multi-date Sentinel-2 imagery, cloud masking and season-aware comparisons. It is not implemented. Comparing predictions for unrelated EuroSAT patches does not constitute meaningful change detection.
 
-Before public deployment, approve publishing, create the versioned model release, set its HTTPS URL in `model_asset.json`, then configure Community Cloud with Python 3.13. Nothing has been pushed or deployed externally. See [DEPLOYMENT.md](DEPLOYMENT.md) and [APP_VERIFICATION.md](APP_VERIFICATION.md).
+Before public deployment, manually include `models/mobilenet.keras` in the GitHub repository along with the application files, then configure Community Cloud with Python 3.13. No commit, push or deployment is performed automatically. See [DEPLOYMENT.md](DEPLOYMENT.md) and [APP_VERIFICATION.md](APP_VERIFICATION.md).

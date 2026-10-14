@@ -1,0 +1,24 @@
+{
+  "checkpoint_path": "C:\\Users\\tumma\\Documents\\Codex\\2026-10-14\\do-not-stop-after-generating-the\\outputs\\satellite-land-use\\models\\mobilenet.keras",
+  "checkpoint_sha256": "31bc6c59ad4a5bed12b0b73b552bce61ff36ee08efd4f80c0e9a7c453333c7ed",
+  "unchanged_result_and_model_files": 93,
+  "sample_predictions_matching_previous": 6,
+  "maximum_sample_probability_difference": 0.0,
+  "preprocessing_class_mapping_prediction_and_gradcam_source": "unchanged",
+  "model_ignored_by_git": false,
+  "other_models_and_caches_ignored": true,
+  "streamlit_health_status": 200,
+  "tests": {
+    "python": "3.13.9",
+    "tensorflow": "2.21.0",
+    "tests_run": 4,
+    "failures": 0,
+    "errors": 0,
+    "successful": true,
+    "new_model_accuracy_measured": false,
+    "seconds": 11.942434999975376,
+    "test_process_peak_rss_mib": 507.07421875
+  },
+  "cloud_runtime_executed": false,
+  "commit_or_push_performed": false
+}

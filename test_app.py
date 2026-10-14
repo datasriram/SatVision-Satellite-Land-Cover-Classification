@@ -89,21 +89,22 @@ class AppChecks(unittest.TestCase):
             bad.write_bytes(b'x' * manifest['bytes'])
             with self.assertRaisesRegex(ValueError, 'SHA-256'):
                 inference.verify_checkpoint(bad, manifest)
-            # Exercise download and cache selection using a mocked HTTPS response.
+            self.assertEqual(inference.checkpoint_path(), ROOT / 'models/mobilenet.keras')
+            # Missing repository assets fail clearly instead of downloading a replacement.
             root = Path(temporary)
-            (root / 'model_asset.json').write_text(json.dumps({**manifest, 'url': 'https://example.org/v1/model.keras'}))
+            (root / 'model_asset.json').write_text(json.dumps(manifest))
+            with patch.object(inference, 'ROOT', root):
+                with self.assertRaisesRegex(FileNotFoundError, 'Include the original trained'):
+                    inference.checkpoint_path()
+            (root / 'models').mkdir()
             content = (ROOT / 'models/mobilenet.keras').read_bytes()
-            with patch.object(inference, 'ROOT', root), patch.object(inference.urllib.request, 'urlopen',
-                                                                    return_value=io.BytesIO(content)):
-                downloaded = inference.checkpoint_path()
-                self.assertEqual(downloaded.read_bytes(), content)
-                self.assertEqual(inference.checkpoint_path(), downloaded)
-                downloaded.unlink()
-            with patch.object(inference, 'ROOT', root), patch.object(inference.urllib.request, 'urlopen',
-                                                                    return_value=io.BytesIO(b'x' * len(content))):
+            local = root / 'models/mobilenet.keras'
+            local.write_bytes(content)
+            with patch.object(inference, 'ROOT', root):
+                self.assertEqual(inference.checkpoint_path(), local)
+                local.write_bytes(b'x' * len(content))
                 with self.assertRaisesRegex(ValueError, 'SHA-256'):
                     inference.checkpoint_path()
-                self.assertEqual(list((root / '.model-cache').iterdir()), [])
 
     def test_streamlit_interaction(self):
         from streamlit.testing.v1 import AppTest

@@ -3,8 +3,6 @@ import hashlib
 import io
 import json
 import os
-import tempfile
-import urllib.request
 from pathlib import Path
 
 os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '2')
@@ -25,36 +23,10 @@ def class_names():
 
 def checkpoint_path():
     manifest = json.loads((ROOT / 'model_asset.json').read_text())
-    local = ROOT / 'models/mobilenet.keras'
-    cached = ROOT / '.model-cache' / manifest['filename']
-    path = local if local.is_file() else cached
+    path = ROOT / 'models/mobilenet.keras'
     if not path.is_file():
-        url = os.environ.get('SATVISION_MODEL_URL') or manifest.get('url')
-        if not url:
-            raise FileNotFoundError('MobileNetV2 checkpoint is missing. Supply models/mobilenet.keras '
-                                    'or set SATVISION_MODEL_URL to the versioned HTTPS release asset. '
-                                    'See DEPLOYMENT.md.')
-        if not url.startswith('https://'):
-            raise ValueError('The model download URL must use HTTPS.')
-        cached.parent.mkdir(exist_ok=True)
-        # Verify before replacing the cache; never write to the original checkpoint.
-        temporary_path = None
-        try:
-            with tempfile.NamedTemporaryFile(dir=cached.parent, delete=False) as temporary:
-                temporary_path = Path(temporary.name)
-                with urllib.request.urlopen(url, timeout=60) as response:
-                    total = 0
-                    while block := response.read(1024 * 1024):
-                        total += len(block)
-                        if total > manifest['bytes']:
-                            raise ValueError('Downloaded model exceeds the expected size.')
-                        temporary.write(block)
-            verify_checkpoint(temporary_path, manifest)
-            temporary_path.replace(cached)
-        finally:
-            if temporary_path is not None:
-                temporary_path.unlink(missing_ok=True)
-        path = cached
+        raise FileNotFoundError('Missing models/mobilenet.keras. Include the original trained '
+                                'checkpoint in the repository before deploying. See DEPLOYMENT.md.')
     verify_checkpoint(path, manifest)
     return path
 
